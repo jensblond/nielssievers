@@ -11,7 +11,10 @@ html, .pure-g [class *= "pure-u"]
   text-align: center
   top: auto
   margin: 3em auto
-  
+  a
+    color: black
+    &:hover
+      text-decoration: none
 .pure-img-responsive
   max-width: 100%
   height: auto
@@ -25,9 +28,31 @@ html, .pure-g [class *= "pure-u"]
   ul
     display: none
 
+.pure-menu.pure-menu-open
+  border: none
+  background: none
+
+.l-box
+  padding: 1em
+
 .posts
   width: 75%
   margin: 0 auto
+  padding-bottom: 40px
+  border-bottom: 1px dashed gray
+
+a
+  color: gray
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
+dl
+  dd
+    margin-bottom: 20px
+  h4
+    margin: 10px 0 0 0
+
 @media (min-width: 48em)
   .sidebar
     position: fixed

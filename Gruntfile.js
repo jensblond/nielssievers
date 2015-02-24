@@ -86,11 +86,17 @@ module.exports = function(grunt) {
           pretty: 'true'
         },
         files: {
-          'index.html': 'index.slim',
-          'page.html': [
+          'index.html': [
             'header.slim',
+            'menu.slim',
             'body.slim',
-            'footer.slim'  // Maybe you need one extra file in dev 
+            'footer.slim'
+          ],
+          'shows.html': [
+            'header.slim',
+            'menu.slim',
+            'show.slim',
+            'footer.slim'
           ]
         }
       }
@@ -104,6 +110,17 @@ module.exports = function(grunt) {
           'css/main.css': 'sass/main.sass'
         }
       }
+    },
+    copy: {
+      main: {
+        files: [
+          // includes files within path
+          {expand: true, src: ['css/*'], dest: 'deploy/'},
+          {expand: true, src: ['img/*'], dest: 'deploy/'},
+          {expand: true, src: ['js/*'], dest: 'deploy/'},
+          {expand: true, src: '**.html', dest: 'deploy/'}
+        ]
+      }
     }
   });
 
@@ -115,6 +132,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-slim');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
